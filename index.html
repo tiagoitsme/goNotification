@@ -1,0 +1,242 @@
+<!doctype html>
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if (gte IE 9)| IEMobile |!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+
+	<title>goNotification</title>
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="goNotification.css"/>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="goNotification.js"></script>
+	
+	<style type="text/css">
+	body{
+		background: url("background.jpg") fixed;
+		margin: 0;
+		padding: 0;
+		font-family: 'Open Sans', 'sans-serif';
+	}
+	
+	a{
+		border-bottom: 2px dashed #cfb442;
+		color: #cfb442;
+		text-decoration: none;
+	}
+
+	header{
+		background: rgba(1,1,1,.5) url("pattern.png");
+		width: 100%;
+		padding: 22px 0;
+		color: white;
+		text-align: center;
+	}
+
+	header h1{
+		margin: 0;
+		font-size: 32px;
+	}
+
+	header p{
+		color: rgba(255,255,255,.4);
+		margin: 0;
+		padding: 0;
+	}
+
+	article.description{
+		width: 80%;
+		margin: 0 auto;
+		color: white;
+		font-weight: lighter;
+	}
+
+	ul{
+		width: 100%;
+		display: table;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	ul li{
+		float: left;
+		padding: 10px;
+		margin: 0;
+		width: 23.25%;
+		background: #111;
+		color: white;
+		text-align: center;
+		font-size: 14px;
+		text-shadow: 1px 1px 1px #111;
+	}
+
+	ul li.warning{
+		background: #E25440;
+	}
+
+	ul li.info{
+		background: #5BA4E5;
+	}
+
+	ul li.success{
+		background: #9fbb58;
+	}
+
+	ul li.error{
+		background: #9e1c30;
+	}
+
+	ul li:hover{
+		opacity: .8;
+	}
+
+	ul li.loading{
+		width: 98.3%;
+		background: #333;
+	}
+
+	pre,code{
+		background: rgba(1,1,1,.6) url("pattern.png");
+		color: white;
+		padding: 0;
+		padding: 14px;
+		margin: 20px 0;
+		width: 98.3%;
+		display: table;
+		line-height: 22px;
+	}
+
+	code i{
+		color: #9ccf86;
+		margin-left: 16px;
+	}
+
+	code span{
+		color: #cf7687;
+		margin-left: 18px;
+	}
+
+	h1{
+		font-size: 26px;
+	}
+
+	h3{
+		padding: 0;
+		margin: 0;
+		font-size: 16px;
+	}
+
+	p.note{
+		font-style: italic;
+		color: rgba(255,255,255,.7);
+		padding: 0;
+		margin: 0;
+	}
+	</style>
+
+</head>
+<body>
+
+	<header>
+		<h1>goNotification</h1>
+		<p>Lightweight jQuery Ghost-like Notification Plugin</b>
+	</header>
+
+	<article class="description">
+		<h1>Welcome!</h1>
+
+		<p>goNotification is a simple and lightweight jQuery plugin inspired by the design of <a href=".">Ghost</a> notifications.</p>
+		<p>It offers some very basic functionality such as different type of notifications (success, warning, ...) and different positions. It also offers options to close manually or time-based. At this moment there are basic callback support which may be extended if I see is something people wants.</p>
+	</article>
+
+	<article class="description">
+		<h1>Demo</h1>
+		<p>Some quick examples.</p>
+		<ul>
+			<li class="warning" data-position="bottom left">Bottom Left (Warning)</li>
+			<li class="success" data-position="top right">Top Right (Success)</li>
+			<li class="info" data-position="top center">Top Center (Info)</li>
+			<li class="error" data-position="bottom center">Bottom Center (Error)</li>
+			<li class="loading" data-position="bottom center">Bottom Center (Loading Mode)</li>
+		</ul>
+	</article>
+
+	<article class="description">
+		<h1>Install</h1>
+		<p>Installing this plugin is pretty simple and straightforward. All you need is to download the files and place the CSS and JS somewhere. Then you just need to refer to them.
+		
+		<code>
+			&lt;script src=&quot;goNotification.min.js&quot;&gt;&lt;/script&gt; <br/>
+			&lt;link rel=&quot;stylesheet&quot; href=&quot;goNotification.css&quot;/&gt;
+		</code>
+
+		<h3>NOTE</h3>
+		<p class="note">This plugin uses FontAwesome to display icons. If you already use it, you can remove it from the top of CSS file.</p>
+	</article>
+
+	<article class="description">
+		<h1>How to Use</h1>
+		
+		<p class="note">This will give you a success message with your text.</p>
+		<code>
+			$.goNotification('message');
+		</code>
+	
+		<p class="note">This will give you a custom message with your selected type.</p>
+		<code>
+			$.goNotification('message', 'type');
+		</code>
+
+		<p class="note">This will give you a custom message with custom options. See the list of available options below.</p>
+		<code>
+			$.goNotification('message', { option: option, another: another });
+		</code>
+	</article>
+
+	<article class="description">
+		<h1>Options</h1>
+		<p>goNotification comes with some customizable options so you can configure it to fit your needs.</p>
+
+		<code>
+			$.goNotification('message', { <br><br>
+	
+                type: 'success', <span>success | warning | error | info | loading</span><br>
+                position: 'bottom left', <span>bottom left | bottom right | bottom center | top left | top right | top center</span><br>
+                timeout: 4000, <i>time in milliseconds to self-close; <b>false</b> for disable</i> <span> 4000 | false</span><br>
+                animation: 'fade', <span>fade | slide</span><br> 
+                animationSpeed: 'slow', <span>slow | normal | fast</span><br>
+                loadingMsg: 'Loading...', <i>custom message for the loading mode</i><br>
+                allowClose: true, <i>display shadow?</i><span>true | false</span><br>
+                shadow: false, <i>display shadow?</i><span>true | false</span><br>
+                stripes: false, <i>display background stripes?</i><span>true | false</span><br>
+                onClose: function() {}, <i>callback function when it's about to close</i><br>
+                onStart: function() {} <i>callback function when it's about to start</i><br><br>
+
+            });
+		</code>
+	</article>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("li").on('click', function(){
+
+		var position = $(this).data('position'),
+			type = $(this).attr('class');
+
+			var notification = $.goNotification('Hello there!', {
+				position: position,
+				type: type
+			});
+
+			if(type == 'loading'){
+				notification.close();
+			}
+	});
+
+});
+</script>
+
+</body>
+</html>
