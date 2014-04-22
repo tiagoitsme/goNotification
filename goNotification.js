@@ -25,7 +25,6 @@
                 timeout: 4000,
                 animation: 'fade',
                 animationSpeed: 'slow',
-                loadingMsg: 'Loading...',
                 allowClose: true,
                 shadow: false,
                 stripes: false,
@@ -34,7 +33,7 @@
             }, options);
 
             if(settings.type == 'loading'){
-                message = settings.loadingMsg;
+                message = (message.length > 0 ? message : 'Loading...');
                 var $loading = true;
             }
 
@@ -71,7 +70,7 @@
         var notification_id = 'go-' + _makeid();
 
         $holder = $('[class="js-go-notification ' + settings.position + '"]');
-        $template = '<article id="' + notification_id + '" class="notification ' + settings.type + ' ' + (settings.shadow ? 'shadow' : '') + ' ' + (settings.stripes ? 'stripes' : '') + '"><section>' + message + '</section></article>';
+        $template = '<article id="' + notification_id + '" class="notification ' + settings.type + ' ' + (settings.shadow ? 'shadow' : '') + ' ' + (settings.stripes ? 'stripes' : '') + '"><section>' + message + ' ' + (settings.allowClose && !$loading ? '<i class="fa fa-times-circle"></i>' : '' ) + '</section></article>';
         $holder.append($template);
 
         $notification = $("#" + notification_id);
@@ -79,7 +78,7 @@
 
         /* functions */
 
-        var $close = $("aside.js-go-notification article section i"),
+        var $close = $("#" + notification_id + ' section i'),
             
             _timer = function(time, update, complete){
                 var start = new Date().getTime();
