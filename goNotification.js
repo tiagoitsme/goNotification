@@ -1,8 +1,8 @@
 /*
  * goNotification (jQuery)
- * version: 0.1
+ * version: 0.1.1 (28/04/2014)
  * author: @tiagoitsme
- * homepage:
+ * homepage: http://tiagoitsme.github.io/goNotification - http://talk.tiagoits.me
  *
  * Licensed under the MIT license
  *      http://www.opensource.org/licenses/mit-license.php
@@ -13,7 +13,7 @@
 
 ;(function ( $, window, document, undefined ) {
     
-    $.goNotification = function(message, options = 'success')
+    $.goNotification = function(message, options)
     {
         /* defaults */
 
