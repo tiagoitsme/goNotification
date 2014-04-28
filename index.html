@@ -54,7 +54,7 @@
 		width: 80%;
 		margin: 0 auto;
 		color: white;
-		font-weight: lighter;
+		
 	}
 
 	ul{
@@ -67,9 +67,9 @@
 
 	ul li{
 		float: left;
-		padding: 10px;
+		padding: 10px 0;
 		margin: 0;
-		width: 23.25%;
+		width: calc(100%/4);
 		background: #111;
 		color: white;
 		text-align: center;
@@ -78,6 +78,7 @@
 		-webkit-transition: all ease 0.3s;
 		-moz-transition: all ease 0.3s;
 		transition: all ease 0.3s;
+		font-weight: 600;
 	}
 
 	ul li.warning{
@@ -103,7 +104,7 @@
 	}
 
 	ul li.loading{
-		width: 98.3%;
+		width: 100%;
 		background: #333;
 	}
 
@@ -113,7 +114,7 @@
 		padding: 0;
 		padding: 14px;
 		margin: 20px 0;
-		width: 98.3%;
+		width: 100%;
 		display: table;
 		line-height: 22px;
 	}
@@ -289,7 +290,8 @@
 		<h1>Releases</h1>
 		
 		<div class="releases">
-			<p><i>0.1</i> <span>22 April, 2014</span> Initial Release</p>
+			<p><i>0.1.1</i> <span>28 April, 2014</span> Fixed potential issue on Chromium/WebKit browsers</p>
+			<p><i>0.1.0</i> <span>22 April, 2014</span> Initial Release</p>
 		</div>
 	</article>
 
